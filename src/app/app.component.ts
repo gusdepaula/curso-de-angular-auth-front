@@ -7,7 +7,6 @@ import { AdminRoutingModule } from './components/admin/admin-routing.module';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, AdminRoutingModule],
-  template: `<a [routerLink]="['admin']">Admin</a
-    ><router-outlet></router-outlet>`,
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {}
