@@ -1,12 +1,31 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-sign',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './sign.component.html',
-  styleUrl: './sign.component.scss'
+  styleUrl: './sign.component.scss',
 })
 export class SignComponent {
+  public formAuth: FormGroup = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
 
+  constructor(private formBuilder: FormBuilder) {}
+
+  public submitForm() {
+    if (this.formAuth.valid) {
+      console.log(this.formAuth);
+    }
+  }
 }
